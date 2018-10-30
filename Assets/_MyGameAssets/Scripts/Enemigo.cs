@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemigo : MonoBehaviour {
 
     // DEclaracion de variables
     [Header("ESTADO")]
+    [SerializeField] Image barraVida;
     [SerializeField] protected bool estaVivo = true;
     [SerializeField] int vida = 5;
     [Header("ATAQUE")]
@@ -23,6 +25,11 @@ public class Enemigo : MonoBehaviour {
 
     // METODOS PROPIOS
     // Recibir Daño
+    private void Update()
+    {
+        barraVida.fillAmount = vida;
+    }
+
     public void RecibirDanyo(int danyo)
     {
         vida -= danyo;

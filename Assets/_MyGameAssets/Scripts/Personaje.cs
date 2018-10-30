@@ -14,7 +14,6 @@ public class Personaje : MonoBehaviour {
     [SerializeField] int vidaMaxima = 150;
     [SerializeField] Image barraDeVida;
     
-
     [Header("ARSENAL")]
     [SerializeField] Arma[] armas = new Arma[NUM_ARMAS];
     [SerializeField] float tiempoEntreDisparos = 0.05f;
