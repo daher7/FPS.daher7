@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Personaje : MonoBehaviour {
     // DEclaración de Variables:
@@ -11,13 +12,13 @@ public class Personaje : MonoBehaviour {
     [Header("ESTADO")]
     [SerializeField] int vidaActual = 150;
     [SerializeField] int vidaMaxima = 150;
-    [SerializeField] TextMesh textoVida;
+    [SerializeField] Image barraDeVida;
+    
+
     [Header("ARSENAL")]
     [SerializeField] Arma[] armas = new Arma[NUM_ARMAS];
     [SerializeField] float tiempoEntreDisparos = 0.05f;
     float tiempoAtaque;
-
-    
     
 	void Start () {
         // Activamos el arma
@@ -25,9 +26,9 @@ public class Personaje : MonoBehaviour {
 	}
 	
 	void Update () {
-        // Mostramos la vida Actual
-        textoVida.text = "" + vidaActual;
 
+        // Progreso de la Barra de Vida
+        barraDeVida.fillAmount = vidaActual;
         // Disparar el arma
         if (Input.GetMouseButtonDown(0)) {
             intentoDeAtaque();
@@ -84,8 +85,9 @@ public class Personaje : MonoBehaviour {
     // Recibir daño
     public void RecibirDanyo(int danio)
     {
-        vidaActual -= danio;
-        if(vidaActual <= 0)
+        vidaActual -= danio;   
+
+        if (vidaActual <= 0)
         {
             vidaActual = 0;
             Morir();
